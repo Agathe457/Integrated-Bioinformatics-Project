@@ -22,4 +22,5 @@ ALLOWED_SYMBOLS = {
     "Y",
     "V",
     "X",
+    "U",
 }

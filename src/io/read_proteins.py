@@ -15,11 +15,16 @@ def read_proteins_from_file(path: str, extension=None) -> Generator[str, None, N
 
     if extension == "fasta":
         with open(path, "r") as fasta_file:
+            buffer = ""
             for line in fasta_file:
                 if line[0] == ">":
+                    if buffer:
+                        yield buffer
+                        buffer = ""
                     continue
                 else:
-                    yield line.strip()
+                    buffer += line.strip()
+
     elif extension == "tsv":
         with open(path, "r") as tsv_file:
             for c, line in enumerate(tsv_file):
