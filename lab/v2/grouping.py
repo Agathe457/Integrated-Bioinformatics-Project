@@ -98,7 +98,6 @@ for fasta_file in tqdm(os.listdir("data/proteomes"), desc="Grouping", unit="prot
                 print(bps)
                 total_bps += bps
                 c += 1
-                print("y")
             except:
                 pass
     print("Avg bps", total_bps / c)

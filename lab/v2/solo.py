@@ -47,7 +47,6 @@ for fasta_file in tqdm(os.listdir("data/proteomes"), desc="Grouping", unit="prot
             t_bps += bps
             x += 1
         except:
-            print("X")
             pass
         if i > 1000:
             break

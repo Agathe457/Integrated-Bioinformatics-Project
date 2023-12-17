@@ -8,7 +8,7 @@ fake_args = [
     'out/taurus_save.pc',
     'out',
     'taurus_save',
-    'out/B.taurus.sequences',
+    'out/prot.sequences',
 ]
 
 

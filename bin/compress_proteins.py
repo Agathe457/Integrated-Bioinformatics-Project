@@ -1,11 +1,13 @@
 import argparse
+import logging
 
 from tqdm import tqdm
 
 from src.compress.binary_utf8 import binary_string_to_utf8
-from src.compress.compress_sequence import compress_sequence
+from src.compress.compress_sequence import compress_sequence, decompress_sequence
 from src.io.codec import load_protein_codec
 from src.io.read_proteins import read_proteins_from_file
+from src.utils.huffman import encoding_to_decoding_codes
 
 
 def main():
@@ -25,7 +27,11 @@ def main():
     for file in tqdm(args.input_files, unit="file"):
         for protein in read_proteins_from_file(file):
             out = compress_sequence(protein, context, encodings)
+            decodings = encoding_to_decoding_codes(encodings)
+            decompressed_seq = decompress_sequence(out, context, decodings)
             compressed.append(binary_string_to_utf8(out))
+
+
 
     # Save each compressed sequence on a new line in the output file
     with open(args.output_path, 'w', encoding='utf-8') as f:

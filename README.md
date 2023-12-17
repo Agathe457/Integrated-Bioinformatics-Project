@@ -60,3 +60,9 @@ using the scripts mentioned previously.
 ## The _tests_ folder
 
 This folder contains test for the different utilities of the bin folder.
+
+## The _lab_ folder
+
+This folder contains many files that were used to test and explore hypothesis
+on how to compress DNA/Proteins. They are historical files showcasing part of the
+research that was done to come up with the presented solution.

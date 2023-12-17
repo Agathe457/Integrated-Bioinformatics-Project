@@ -1,5 +1,6 @@
 import heapq
 import json
+import logging
 from collections import defaultdict
 
 
@@ -23,9 +24,11 @@ class HuffmanNode:
 
 
 def encoding_to_decoding_codes(codes: dict):
-    return {
-        value: key for value, key in codes.items()
-    }
+    data = {}
+    for key, value in codes.items():
+        data[str(value)] = key
+
+    return data
 
 
 # Load generic codes from source/generic.encoding (these are codes generated
@@ -111,6 +114,7 @@ def decode_huffman_binary(data: str, huffman_codes: dict):
         if code in huffman_codes:
             decoded += huffman_codes[code]
             code = ""
+
     return decoded
 
 

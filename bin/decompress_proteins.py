@@ -1,10 +1,12 @@
 import argparse
+import logging
 
 from tqdm import tqdm
 
 from src.compress.binary_utf8 import utf8_to_binary_string
 from src.compress.compress_sequence import decompress_sequence
 from src.io.codec import load_protein_codec
+from src.utils.huffman import encoding_to_decoding_codes
 
 
 def _read_compressed_sequences_from_file(file: str):
@@ -22,15 +24,15 @@ def main(limit=None):
 
     codec = load_protein_codec(args.codec_name, args.codec_folder)
     encodings, context = codec[0][0], codec[1]
+    decodings = encoding_to_decoding_codes(encodings)
 
     decompressed = []
 
     for file in tqdm(args.input_files, unit="file"):
         compressed_sequences = _read_compressed_sequences_from_file(file)
         for i, compressed_seq in enumerate(compressed_sequences):
-            compressed_seq = compressed_seq[0: len(compressed_seq) - 1]
             binary_seq = utf8_to_binary_string(compressed_seq)
-            decompressed_seq = decompress_sequence(binary_seq, context, encodings)
+            decompressed_seq = decompress_sequence(binary_seq, context, decodings)
             decompressed.append(decompressed_seq)
 
             if i == limit:

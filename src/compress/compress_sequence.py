@@ -27,12 +27,10 @@ def compress_sequence(sequence, context, encodings, disable_generic=False):
     out = [chr(int(out[i:i + 8], 2)) for i in range(0, len(out), 8)]
     # Add the unencoded first context characters
     out = sequence[:context] + "".join(out)
-
     if not disable_generic:
         out = generic_encode_huffman_binary(out)
     else:
         logging.warning("Compressing without generic encoding.")
-
     return out
 
 
@@ -40,12 +38,13 @@ def decompress_sequence(sequence, context, decodings):
     # Decode huffman encoding
     sequence = generic_decode_huffman_binary(sequence)
 
-    # Convert utf-8 string to binary string
-    sequence = "".join([bin(ord(char))[2:].zfill(8) for char in sequence])
-
     # Start sequence with the first context characters
     out = sequence[:context]
     sequence = sequence[context:]
+
+    # Convert utf-8 string to binary string
+    sequence = "".join([bin(ord(char))[2:].zfill(8) for char in sequence])
+
 
     buffer = ""
 
