@@ -5,7 +5,7 @@ from unittest.mock import patch
 from bin import generate_codec
 
 fake_args = [
-    'B.taurus.fasta',
+    'prot.fasta',
     'out',  # Separate the output_folder and its value
     '3',
     'taurus',  # Separate the name and its value

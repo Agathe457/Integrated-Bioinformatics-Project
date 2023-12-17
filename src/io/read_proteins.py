@@ -25,6 +25,9 @@ def read_proteins_from_file(path: str, extension=None) -> Generator[str, None, N
                 else:
                     buffer += line.strip()
 
+            if buffer:
+                yield buffer
+
     elif extension == "tsv":
         with open(path, "r") as tsv_file:
             for c, line in enumerate(tsv_file):

@@ -56,3 +56,7 @@ and to decompress them afterwards.
 
 This folder contains generic.encoding and global_huffman.encoding, generated
 using the scripts mentioned previously.
+
+## The _tests_ folder
+
+This folder contains test for the different utilities of the bin folder.

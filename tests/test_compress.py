@@ -3,8 +3,9 @@ from io import StringIO
 from unittest.mock import patch
 
 from bin import compress_proteins
+
 fake_args = [
-    'B.taurus.fasta',
+    'prot.fasta',
     'out',
     'taurus_save',
     'out/taurus.pc'
@@ -19,7 +20,7 @@ class TestCompressProteins(unittest.TestCase):
         compress_proteins.main()
         output = mock_stdout.getvalue()
         # Replace this assertion with the actual expected output
-        self.assertEqual(output, "Compressed all 37502 sequences\n")
+        self.assertEqual(output, "Compressed all 1 sequences\n")
 
 
 if __name__ == '__main__':
