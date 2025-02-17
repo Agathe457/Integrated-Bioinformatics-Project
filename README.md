@@ -6,6 +6,8 @@ Transforming Proteomic Data Compression.
 Overcoming Compression Challenges and Innovat-ing New Combinatorial Techniques: Accessible Analysis and Computational
 Efficiency.
 
+![IBP](https://github.com/user-attachments/assets/0af066da-69d8-402f-8bec-14dc21974fd3)
+
 Link to report: https://1drv.ms/w/s!AkttQi26dAy4glH1RECYG2jUP1U0
 
 ## Structure of the project
